@@ -9,10 +9,19 @@ h2{
     justify-content: center;
     font-size: calc(10px + 2vmin);
 }
+
 .btn {
     margin: 6px 0;
     width: 100px;
     padding: 5px;
+}
+.btnLogin {
+    width: 120px;
+    height: 40px;
+}
+
+.fullWidth{
+    width: 100%;
 }
 
 .maxWidth {
