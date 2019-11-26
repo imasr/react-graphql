@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.scss';
-import Login from "./components/Login";
+import Register from "./components/Register/Register";
 
 export default class App extends React.Component {
   render() {
     return (
-
-      <Login />
-
+      <Register />
     )
   }
 }
