@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/myapp/static/css/main.87fb5adb.chunk.css",
+    "main.js": "/myapp/static/js/main.668e26de.chunk.js",
+    "main.js.map": "/myapp/static/js/main.668e26de.chunk.js.map",
+    "runtime~main.js": "/myapp/static/js/runtime~main.6e8bc006.js",
+    "runtime~main.js.map": "/myapp/static/js/runtime~main.6e8bc006.js.map",
+    "static/css/2.77a5ae31.chunk.css": "/myapp/static/css/2.77a5ae31.chunk.css",
+    "static/js/2.c962b81b.chunk.js": "/myapp/static/js/2.c962b81b.chunk.js",
+    "static/js/2.c962b81b.chunk.js.map": "/myapp/static/js/2.c962b81b.chunk.js.map",
+    "index.html": "/myapp/index.html",
+    "precache-manifest.68ef6a67bb3439a3d1f9912b635fe351.js": "/myapp/precache-manifest.68ef6a67bb3439a3d1f9912b635fe351.js",
+    "service-worker.js": "/myapp/service-worker.js",
+    "static/css/2.77a5ae31.chunk.css.map": "/myapp/static/css/2.77a5ae31.chunk.css.map",
+    "static/css/main.87fb5adb.chunk.css.map": "/myapp/static/css/main.87fb5adb.chunk.css.map",
+    "static/media/app_icon.png": "/myapp/static/media/app_icon.a23399fb.png",
+    "static/media/font-awesome.min.css": "/myapp/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/index.css": "/myapp/static/media/hd.a09c8a58.jpg"
+  }
+}
