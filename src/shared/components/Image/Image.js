@@ -7,7 +7,7 @@ import Avatar from '@material-ui/core/Avatar';
 const Image = (props) => {
     console.log(props)
     return(
-        <Avatar variant="rounded" alt="Remy Sharp" src={props.src} />
+        <Avatar variant={props.variant} alt="Remy Sharp" src={props.src} />
 
     )
     

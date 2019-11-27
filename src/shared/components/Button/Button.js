@@ -6,8 +6,6 @@ const CustomButton = (props) => {
     console.log(props)
     return(
        <Button
-            variant="contained"
-            color="primary"
             className="btnLogin font-size-14px"
             width={1}
             disabled={props.disabled}

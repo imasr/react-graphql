@@ -1,6 +1,6 @@
 {
     "InputElements": {
-        "Name": {
+        "Username": {
             "elementType": "input",
             "elementConfig": {
                 "type": "text",
@@ -14,9 +14,9 @@
             "touched": false
         },
         "Address": {
-            "elementType": "input",
+            "elementType": "textarea",
             "elementConfig": {
-                "type": "text",
+                "type": "textarea",
                 "placeholder": "Address"
             },
             "value": "",
@@ -35,8 +35,8 @@
             "value": "",
             "validation": {
                 "required": true,
-                "minLength": 5,
-                "maxLength": 5
+                "minLength": 6,
+                "maxLength": 6
             },
             "valid": false,
             "touched": false
@@ -60,7 +60,7 @@
                 "type": "email",
                 "placeholder": "Your E-Mail"
             },
-            "value": "ashishs723@gmail.com",
+            "value": "",
             "validation": {
                 "required": true
             },
@@ -73,7 +73,7 @@
                 "type": "password",
                 "placeholder": "Your password"
             },
-            "value": "ashishs723",
+            "value": "",
             "validation": {
                 "required": true
             },
@@ -95,13 +95,18 @@
                 ]
             },
             "value": "",
-            "valid": true
+            "validation": {
+                "required": true
+            },
+            "valid": false
         }
     },
     "Button": {
         "elementType": "button",
         "elementConfig": {
-            "type": "submit"
+            "type": "submit",
+            "variant": "contained",
+            "color": "primary"
         },
         "text": "Submit",
         "className": "text-right"

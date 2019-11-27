@@ -2,6 +2,8 @@ import React from 'react';
 import './Register.scss';
 import formData from './form.json'
 import Logo from '../../assets/app_icon.png';
+import Utils from '../../services/Utils';
+import axios from '../../services/api.services';
 
 import Input from '../../shared/components/Input/Input';
 import Image from '../../shared/components/Image/Image';
@@ -18,14 +20,45 @@ export default class Register extends React.Component {
     }
     submitForm = event => {
         event.preventDefault()
-        const loading = {
-            ...this.state.loading
-        };
 
         this.setState({ loading:true });
-        setTimeout(() => {
-            this.setState({ loading : false });
-        }, 5000);
+        const formData={}
+        for (let key in this.state.InputElements) {
+            formData[key.toLowerCase()] = this.state.InputElements[key].value;
+        }
+        console.log(formData);
+
+        axios.post('register', formData ).then( response => {
+                console.log(response);
+                localStorage.setItem('user',JSON.stringify(response.data.result)) 
+                this.setState({ loading: false });
+            }).catch( error => {
+                console.log(error);
+                this.setState({ loading: false });
+            } );
+       
+    }
+
+    checkValidity=(type, value, rule)=>{
+        let isfieldValid=true
+        if(rule){
+            if(isfieldValid && rule.required){
+                isfieldValid = value.trim() !== '' 
+            }
+            if(isfieldValid && rule.maxLength){
+                isfieldValid =  value.trim().length <= rule.maxLength
+            }
+            if(isfieldValid && rule.minLength){
+                isfieldValid = isfieldValid && value.trim().length >= rule.minLength
+            }
+            if(isfieldValid && type === 'email'){
+                isfieldValid =  Utils.validateEmail(value)
+            }
+            if(isfieldValid && type === 'password'){
+                isfieldValid =  Utils.validatePassword(value)
+            }
+        }
+        return isfieldValid
     }
 
     onChange=(event, field)=>{
@@ -36,9 +69,16 @@ export default class Register extends React.Component {
             ...InputElements[field]
         };
         updatedFormElement.value = event.target.value
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.elementConfig.type, updatedFormElement.value, updatedFormElement.validation);
+
         InputElements[field] = updatedFormElement;
 
-        this.setState({ InputElements });
+        let formIsValid = true
+        for (const inputName in InputElements){
+            formIsValid= formIsValid && InputElements[inputName].valid
+        }
+
+        this.setState({ InputElements, formIsValid });
     }
 
     render() {
@@ -49,12 +89,12 @@ export default class Register extends React.Component {
                 config: this.state.InputElements[key]
             });
         }
-        console.log(formArray)
+        console.log(this.state)
 
         let form = (
             <div>
                 <h5 className="py-2">Register</h5>
-                <Image src={Logo} />
+                <Image src={Logo} variant="rounded"/>
                 <form onSubmit={this.submitForm}>
                     {formArray.map(formElement => (
                         <Input
@@ -64,7 +104,7 @@ export default class Register extends React.Component {
                             elementConfig={formElement.config.elementConfig}
                             value={formElement.config.value}
                             className={formElement.className}
-                            changefield={event=>this.onChange(event,formElement.id)}
+                            changeEvent={event=>this.onChange(event, formElement.id)}
                         />
                     ))}
                 <CustomButton key={this.state.Button.text}
@@ -73,7 +113,7 @@ export default class Register extends React.Component {
                         elementConfig={this.state.Button.elementConfig}
                         text={this.state.Button.text}
                         className={this.state.Button.className}
-                        disabled={this.state.formIsValid}
+                        disabled={!this.state.formIsValid}
                         />
                 </form>
             </div>

@@ -21,7 +21,22 @@ const Input = (props) => {
                             label={props.id}
                             name={props.id}
                             value={props.value}
-                            onChange={props.changefield} />
+                            onChange={props.changeEvent} 
+                            helperText={props.error}/>
+            break;
+        case 'textarea':
+             inputElement=<TextField
+                            multiline
+                            margin="normal"
+                            variant="outlined"
+                            className="font-size-14px fullWidth rounded-0"
+                            {...props.elementConfig}
+                            id={props.id}
+                            label={props.id}
+                            name={props.id}
+                            value={props.value}
+                            onChange={props.changeEvent} 
+                            helperText={props.error}/>
             break;
         case 'select':
             inputElement=
@@ -31,7 +46,7 @@ const Input = (props) => {
                     labelId="demo-simple-select-outlined-label"
                     id={props.id}
                     value={props.value}
-                    onChange={props.changefield}>
+                    onChange={props.changeEvent}>
                     <MenuItem value=""><em>None</em></MenuItem>
                         {props.elementConfig.options.map(option=>(
                         <MenuItem key={option.value} value={option.value}>
