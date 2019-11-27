@@ -1,6 +1,6 @@
 import React from 'react';
 import './Register.scss';
-import formData from './form.json'
+import formData from './registrationForm.json'
 import Logo from '../../assets/app_icon.png';
 import Utils from '../../services/Utils';
 import axios from '../../services/api.services';

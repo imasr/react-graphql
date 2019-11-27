@@ -1,0 +1,42 @@
+{
+    "InputElements": {
+        "Email": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "email",
+                "placeholder": "Your E-Mail"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "valid": false,
+            "touched": false
+        },
+        "Password": {
+            "elementType": "input",
+            "elementConfig": {
+                "type": "password",
+                "placeholder": "Your password"
+            },
+            "value": "",
+            "validation": {
+                "required": true
+            },
+            "valid": false,
+            "touched": false
+        }
+    },
+    "Button": {
+        "elementType": "button",
+        "elementConfig": {
+            "type": "submit",
+            "variant": "contained",
+            "color": "primary"
+        },
+        "text": "Login",
+        "className": "text-right"
+    },
+    "formIsValid": false,
+    "loading": false
+}

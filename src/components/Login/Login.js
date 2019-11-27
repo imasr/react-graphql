@@ -3,6 +3,8 @@ import './Login.scss';
 import Logo from '../../assets/app_icon.png';
 import Image from '../../shared/components/Image/Image';
 
+import formData from './loginForm.json'
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 const passwordObj = {
