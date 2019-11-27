@@ -1,5 +1,5 @@
 {
-    "formData": {
+    "InputElements": {
         "Name": {
             "elementType": "input",
             "elementConfig": {
@@ -29,7 +29,7 @@
         "ZipCode": {
             "elementType": "input",
             "elementConfig": {
-                "type": "text",
+                "type": "number",
                 "placeholder": "ZIP Code"
             },
             "value": "",
@@ -96,21 +96,15 @@
             },
             "value": "",
             "valid": true
-        },
-        "Submit": {
-            "elementType": "button",
-            "elementConfig": {
-                "type": "submit",
-                "disabled": true
-            },
-            "value": "ashishs723",
-            "validation": {
-                "required": true
-            },
-            "className": "text-right",
-            "valid": false,
-            "touched": false
         }
+    },
+    "Button": {
+        "elementType": "button",
+        "elementConfig": {
+            "type": "submit"
+        },
+        "text": "Submit",
+        "className": "text-right"
     },
     "formIsValid": false,
     "loading": false

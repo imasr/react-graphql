@@ -9,7 +9,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 
 const Input = (props) => {
-    console.log(props)
     let inputElement = null
     switch ( props.elementType ) {
         case 'input':

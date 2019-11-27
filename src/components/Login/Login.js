@@ -1,6 +1,7 @@
 import React from 'react';
 import './Login.scss';
 import Logo from '../../assets/app_icon.png';
+import Image from '../../shared/components/Image/Image';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -63,7 +64,7 @@ export default class Login extends React.Component {
             <div className="container">
                 <div className="Login">
                     <div className="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-12 maxWidth p-4">
-                        <img src={Logo} className="logo img rounded" width="60" alt="" />
+                        <Image src={Logo} />
                         <h5 className="py-2">Sign In</h5>
                         <form className="needs-validation" onSubmit={this.submitForm}>
                             <div>
