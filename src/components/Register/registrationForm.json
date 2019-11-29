@@ -111,6 +111,6 @@
         "text": "Submit",
         "className": "text-right"
     },
-    "formIsValid": false,
+    "formIsValid": true,
     "loading": false
 }

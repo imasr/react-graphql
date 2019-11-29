@@ -3,7 +3,7 @@ import './Register.scss';
 import formData from './registrationForm.json'
 import Logo from '../../assets/app_icon.png';
 import Utils from '../../services/Utils';
-import axios from '../../services/api.services';
+import axios from 'axios';
 
 import Input from '../../shared/components/Input/Input';
 import Image from '../../shared/components/Image/Image';
@@ -15,7 +15,6 @@ export default class Register extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(formData)
         this.state = formData
     }
     submitForm = event => {
@@ -89,7 +88,6 @@ export default class Register extends React.Component {
                 config: this.state.InputElements[key]
             });
         }
-        console.log(this.state)
 
         let form = (
             <div>

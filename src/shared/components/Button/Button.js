@@ -3,7 +3,6 @@ import './Button.scss';
 import Button from '@material-ui/core/Button'
 
 const CustomButton = (props) => {
-    console.log(props)
     return(
        <Button
             className="btnLogin font-size-14px"
