@@ -3,7 +3,8 @@ import './Login.scss';
 import Logo from '../../assets/app_icon.png';
 import Image from '../../shared/components/Image/Image';
 
-import formData from './loginForm.json'
+// import formData from './loginForm.json'
+import Loader from "../../shared/components/Loader/Loader";
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -23,7 +24,8 @@ export default class Login extends React.Component {
         super(props)
         this.state = {
             form: { email: '', password: '' },
-            error: {}
+            error: {},
+            loading: false
         }
 
     }
@@ -47,6 +49,7 @@ export default class Login extends React.Component {
 
     submitForm = event => {
         event.preventDefault();
+        this.setState({ loading: true })
         if (this.handleValidation()) {
             console.info('Valid Form')
         } else
@@ -101,6 +104,8 @@ export default class Login extends React.Component {
                                     type="submit">Sign in</Button>
                             </div>
                         </form>
+                        <Loader show={this.state.loading} handleClose={() => { this.setState({ loading: false }) }}>
+                        </Loader>
                         <div className="font-size-14px">
                             <a href="/forgot" >Forgot password?</a>
                         </div>

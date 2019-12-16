@@ -8,8 +8,7 @@ import axios from 'axios';
 import Input from '../../shared/components/Input/Input';
 import Image from '../../shared/components/Image/Image';
 import CustomButton from '../../shared/components/Button/Button';
-import Spinner from '../../shared/components/Spinner/Spinner';
-
+import Loader from "../../shared/components/Loader/Loader";
 
 export default class Register extends React.Component {
 
@@ -20,51 +19,50 @@ export default class Register extends React.Component {
     submitForm = event => {
         event.preventDefault()
 
-        this.setState({ loading:true });
-        const formData={}
+        this.setState({ loading: true });
+        const formData = {}
         for (let key in this.state.InputElements) {
             formData[key.toLowerCase()] = this.state.InputElements[key].value;
         }
         console.log(formData);
+        axios.post('register', formData).then(response => {
+            console.log(response);
+            localStorage.setItem('user', JSON.stringify(response.data.result))
+            this.setState({ loading: false });
+        }).catch(error => {
+            console.log(error);
+            this.setState({ loading: false });
+        });
 
-        axios.post('register', formData ).then( response => {
-                console.log(response);
-                localStorage.setItem('user',JSON.stringify(response.data.result)) 
-                this.setState({ loading: false });
-            }).catch( error => {
-                console.log(error);
-                this.setState({ loading: false });
-            } );
-       
     }
 
-    checkValidity=(type, value, rule)=>{
-        let isfieldValid=true
-        if(rule){
-            if(isfieldValid && rule.required){
-                isfieldValid = value.trim() !== '' 
+    checkValidity = (type, value, rule) => {
+        let isfieldValid = true
+        if (rule) {
+            if (isfieldValid && rule.required) {
+                isfieldValid = value.trim() !== ''
             }
-            if(isfieldValid && rule.maxLength){
-                isfieldValid =  value.trim().length <= rule.maxLength
+            if (isfieldValid && rule.maxLength) {
+                isfieldValid = value.trim().length <= rule.maxLength
             }
-            if(isfieldValid && rule.minLength){
+            if (isfieldValid && rule.minLength) {
                 isfieldValid = isfieldValid && value.trim().length >= rule.minLength
             }
-            if(isfieldValid && type === 'email'){
-                isfieldValid =  Utils.validateEmail(value)
+            if (isfieldValid && type === 'email') {
+                isfieldValid = Utils.validateEmail(value)
             }
-            if(isfieldValid && type === 'password'){
-                isfieldValid =  Utils.validatePassword(value)
+            if (isfieldValid && type === 'password') {
+                isfieldValid = Utils.validatePassword(value)
             }
         }
         return isfieldValid
     }
 
-    onChange=(event, field)=>{
+    onChange = (event, field) => {
         const InputElements = {
             ...this.state.InputElements
         };
-        const updatedFormElement = { 
+        const updatedFormElement = {
             ...InputElements[field]
         };
         updatedFormElement.value = event.target.value
@@ -73,8 +71,8 @@ export default class Register extends React.Component {
         InputElements[field] = updatedFormElement;
 
         let formIsValid = true
-        for (const inputName in InputElements){
-            formIsValid= formIsValid && InputElements[inputName].valid
+        for (const inputName in InputElements) {
+            formIsValid = formIsValid && InputElements[inputName].valid
         }
 
         this.setState({ InputElements, formIsValid });
@@ -84,7 +82,7 @@ export default class Register extends React.Component {
         const formArray = [];
         for (const key in this.state.InputElements) {
             formArray.push({
-                id: key, 
+                id: key,
                 config: this.state.InputElements[key]
             });
         }
@@ -92,33 +90,31 @@ export default class Register extends React.Component {
         let form = (
             <div>
                 <h5 className="py-2">Register</h5>
-                <Image src={Logo} variant="rounded"/>
+                <Image src={Logo} variant="rounded" />
                 <form onSubmit={this.submitForm}>
                     {formArray.map(formElement => (
                         <Input
                             key={formElement.id}
                             id={formElement.id}
-                            elementType={formElement.config.elementType} 
+                            elementType={formElement.config.elementType}
                             elementConfig={formElement.config.elementConfig}
                             value={formElement.config.value}
                             className={formElement.className}
-                            changeEvent={event=>this.onChange(event, formElement.id)}
+                            changeEvent={event => this.onChange(event, formElement.id)}
                         />
                     ))}
-                <CustomButton key={this.state.Button.text}
+                    <CustomButton key={this.state.Button.text}
                         id={this.state.Button.text}
-                        elementType={this.state.Button.elementType} 
+                        elementType={this.state.Button.elementType}
                         elementConfig={this.state.Button.elementConfig}
                         text={this.state.Button.text}
                         className={this.state.Button.className}
                         disabled={!this.state.formIsValid}
-                        />
+                    />
                 </form>
+                <Loader show={this.state.loading}></Loader>
             </div>
-            )
-        if ( this.state.loading ) {
-            form = <Spinner />;
-        }
+        )
         return (
             <div className="container">
                 <div className="Login">
