@@ -1,0 +1,16 @@
+.header {
+    flex-grow: 1;
+    position: sticky;
+    z-index: 1070;
+    top: 0;
+}
+.menuButton {
+    margin-right: 16px;
+}
+.title {
+    flex-grow: 1;
+}
+.link{
+    color:white !important;
+    text-decoration: none !important;
+}
